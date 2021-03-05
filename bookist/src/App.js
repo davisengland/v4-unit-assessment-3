@@ -29,7 +29,7 @@ export default class App extends Component {
   }
 
   filterBooks = (input) => {
-    let filteredBooks = this.state.books.filter(elem => (elem.title.toLowerCase().includes(input) || elem.author.toLowerCase().includes(input)))
+    let filteredBooks = this.state.books.filter(elem => (elem.title.toLowerCase().includes(input.toLowerCase()) || elem.author.toLowerCase().includes(input.toLowerCase())))
     this.setState({books: filteredBooks})
   }
 
@@ -39,17 +39,17 @@ export default class App extends Component {
 
   render() {
     return (
-      <main className="App">
+      <section className="App">
         <Header/>
-        <body>
+        <section className="main-section">
           <SearchBar filterBooks={this.filterBooks} reset={this.reset}/>
           <div className="list-shelf">
             <BookList books={this.state.books} addToShelf={this.addToShelf}/>
             <Shelf shelf={this.state.shelf} clearShelf={this.clearShelf}/>
           </div>
-        </body>
+        </section>
   
-      </main>
+      </section>
     )
   }
 }
